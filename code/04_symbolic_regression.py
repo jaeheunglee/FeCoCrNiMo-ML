@@ -78,16 +78,5 @@ model.fit(X, y, variable_names=ELEMENTS)
 
 equations = model.equations_
 equations.to_excel(str(OUT / "SR_equations_boundary.xlsx"), index=False)
-
-print("\nFull Pareto front:")
 print(equations[["complexity", "loss", "score", "equation"]].to_string(index=False))
-print(f"\nSaved to {OUT / 'SR_equations_boundary.xlsx'}")
-print(
-    "\nNote: do not simply pick the row with the highest 'score' value. The "
-    "score reflects only the *local* loss improvement between adjacent "
-    "complexities on the Pareto front, and a single noisy jump can make an "
-    "uninterpretable, overfit expression score highest. Select the equation "
-    "manually by inspecting the loss-vs-complexity curve for a genuine elbow "
-    "(diminishing returns beyond that point) and by checking that the chosen "
-    "expression is physically interpretable."
-)
+print(f"\nSaved full Pareto front to {OUT / 'SR_equations_boundary.xlsx'}")
